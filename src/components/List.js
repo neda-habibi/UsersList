@@ -10,14 +10,13 @@ export default function List() {
     const [currentPage, setCurrentPage] = useState(1);
 
     const pageSize = 10;
-    const totalSize = 50;
+    const totalSize = 10000;
     const pageCount = Math.ceil(totalSize / pageSize);
 
     useEffect(() => {
         let offset = (currentPage - 1)*10 +1;
         console.log("offset ", offset,"current ", currentPage)
         fetch(`https://api.github.com/users?since=${offset}&per_page=${7}`)
-        //fetch('https://api.github.com/users')
             .then(response => response.json())
             .then(response => {
                 setItems(response);

@@ -33,8 +33,8 @@ export default function Pagination({ pageCount,currentPage, setCurrentPage }) {
                     </li>
                 }
                 ):
-                [currentPage-2,currentPage-1, currentPage,currentPage+1, currentPage+2].map((pageNumber, i) => {
-                    const page = pageNumber + 1;
+                [...Array(pageCount).slice(currentPage-3,currentPage+2)].map((pageNumber, i) => {
+                    const page = currentPage + 3 - (6-i) + 1;
                     return <li
                         key={i}
                         className={"page-item " + (page === currentPage && "active")}>
