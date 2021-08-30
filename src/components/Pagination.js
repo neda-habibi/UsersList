@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Pagination({ pageCount, currentPage, setCurrentPage }) {
   const handlePrevClick = () => {
@@ -11,7 +11,6 @@ export default function Pagination({ pageCount, currentPage, setCurrentPage }) {
     if (currentPage !== pageCount) {
       setCurrentPage(currentPage + 1);
     }
-    console.log("current is : ======= ", currentPage);
   };
 
   return (

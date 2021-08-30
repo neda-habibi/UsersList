@@ -2,16 +2,16 @@ import React from "react";
 
 export default function ListItem({ item, onClick }) {
   return (
-    <li className="list-group-item list-group-item-action">
-      <div className="row align-items-start" onClick={onClick}>
-        <div className="col">{item.login}</div>
+    <tr onClick={onClick} data-bs-toggle="tooltip" data-bs-placement="right" title="click to view details">
+        <td style={{width:'80%'}}>{item.login}</td>
+        <td>
         <img
-          className="col"
           className="img-thumbnail"
           style={{ width: "60px", height: "60px" }}
           src={item.avatar_url}
+          alt='avatar'
         />
-      </div>
-    </li>
+        </td>
+    </tr>
   );
 }

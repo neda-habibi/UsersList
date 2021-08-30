@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ListItem from "./ListItem";
 import ItemDetails from "./ItemDetails";
 import Pagination from "./Pagination";
-import Tooltip from "./Tooltip";
 
 export default function List() {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -16,7 +15,6 @@ export default function List() {
 
   useEffect(() => {
     let offset = (currentPage - 1) * 10 + 1;
-    console.log("offset ", offset, "current ", currentPage);
     fetch(`https://api.github.com/users?since=${offset}&per_page=${7}`)
       .then((response) => response.json())
       .then((response) => {
@@ -27,13 +25,11 @@ export default function List() {
 
   const list = items.map((item, i) => {
     return (
-    //   <Tooltip text ='click'>
-        <ListItem
-          item={item}
-          key={item.id}
-          onClick={() => setSelectedUser(item)}
-        />
-    //   </Tooltip>
+      <ListItem
+        item={item}
+        key={item.id}
+        onClick={() => setSelectedUser(item)}
+      />
     );
   });
 
@@ -50,13 +46,19 @@ export default function List() {
   if (!selectedUser) {
     return (
       <>
-        <div className="p-3 mb-2 text-dark" style={{ background: "#e5ecf5" }}>
+        <div className="container" style={{ marginTop:'20px'}}>
           <h1>List Of Github Users</h1>
-          <li className="list-group-item active" className="row">
-            <div className="col-md-4">Login</div>
-            <div className="col-md-8">Avatar</div>
-          </li>
-          <ul className="list-group">{list}</ul>
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Login</th>
+                <th scope="col">Avatar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {list}
+            </tbody>
+          </table>
         </div>
         <Pagination
           pageCount={pageCount}
