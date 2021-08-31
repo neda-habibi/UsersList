@@ -1,7 +1,7 @@
 import React from "react";
 import ContentView from "./ContentView";
 
-export default function ItemDetails({ item, onClick }) {
+const ItemDetails = ({ item, onClick }) => {
   const prop = Object.keys(item).map((property) => {
     return (
       <li className="list-group-item" key={property}>
@@ -49,3 +49,5 @@ export default function ItemDetails({ item, onClick }) {
     </div>
   );
 }
+
+export default ItemDetails;
