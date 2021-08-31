@@ -3,7 +3,7 @@ import ListItem from "./ListItem";
 import ItemDetails from "./ItemDetails";
 import Pagination from "./Pagination";
 
-export default function List() {
+const List = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
@@ -46,7 +46,7 @@ export default function List() {
   if (!selectedUser) {
     return (
       <>
-        <div className="container" style={{ marginTop:'20px'}}>
+        <div className="container" style={{ marginTop: '20px' }}>
           <h1>List Of Github Users</h1>
           <table className="table table-hover">
             <thead>
@@ -74,3 +74,5 @@ export default function List() {
     );
   }
 }
+
+export default List;
